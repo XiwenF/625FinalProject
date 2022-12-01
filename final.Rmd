@@ -1,0 +1,109 @@
+---
+title: "625_Leyuan_Qian"
+author: "Leyuan Qian"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(mice)
+library(missMDA)
+library(ggplot2)
+library(scatterplot3d)
+```
+
+
+```{r}
+#Read in the data and make patient id the identifier
+data=read.csv("Dataset.csv",row.names = 2, stringsAsFactors = F)
+head(data)
+nrow(data)
+```
+```{r}
+#Transfer empty cells into NA
+data[data==""]<-NA
+head(data)
+```
+
+```{r}
+#Delete redundant/uninterpretable variables
+data = select(data,-c("icu_stay_type","encounter_id","hospital_id","icu_id","hospital_admit_source","icu_admit_source","readmission_status")) 
+```
+
+```{r}
+#Delete variables with more than 15% missing values
+complete_data = data[,which(colSums(is.na(data))/nrow(data)<0.15)]
+complete_data_max = colnames(complete_data)[grepl(".*max",colnames(complete_data))]
+complete_data_min = colnames(complete_data)[grepl(".*min",colnames(complete_data))]
+length(complete_data_max)
+length(complete_data_min)
+for (i in 1:length(complete_data_max)){
+  end = nchar(complete_data_max[i]) - 3
+  name = paste(substr(complete_data_max[i],1,end),"min",sep='')
+  if (!(name %in% complete_data_min)){
+    select(complete_data,-complete_data_max[i])
+  }
+}
+```
+
+```{r}
+#Interrelated variables must exist simultaneously
+complete_data=complete_data %>%
+  filter(!is.na(bmi),!is.na(weight),!is.na(height),!is.na(ethnicity),!is.na(gender))
+nrow(complete_data)
+complete_data$gender=as.numeric(complete_data$gender=="M")
+
+```
+```{r}
+dim(complete_data)
+head(complete_data,20)
+```
+
+```{r}
+continuous_data=select(complete_data,-c("ethnicity","icu_type","apache_3j_bodysystem","apache_2_bodysystem"))
+imputed_data=as.data.frame(imputePCA(continuous_data,ncp=2)$completeObs)
+```
+
+```{r}
+pca1 <- prcomp(imputed_data[,-1],center = TRUE,scale = TRUE)
+pc_score<-as.data.frame(pca1$x)
+```
+
+```{r}
+colors=rep("",nrow(imputed_data))
+colors[which(imputed_data$hospital_death==0)]="#0099CC"
+colors[which(imputed_data$hospital_death==1)]="#FF6666"
+pca_plot <- ggplot(data = pc_score,aes(x = PC1,y = PC2))+
+   geom_point(size=0.5,alpha=0.3,color=colors)
+#   
+#   stat_ellipse(aes(fill = iris_input$Species),
+#                type = "norm",geom = "polygon",alpha = 0.25,color = NA)+ # 添加置信椭圆
+#   geom_point(size = 3.5)+
+#   labs(x = xlab1,y = ylab1,color = "Condition",title = "PCA Scores Plot")+
+#   guides(fill = "none")+
+#   theme_bw()+
+#   scale_fill_manual(values = c("purple","orange","pink"))+
+#   scale_colour_manual(values = c("purple","orange","pink"))+
+#   theme(plot.title = element_text(hjust = 0.5,size = 15),
+#         axis.text = element_text(size = 11),axis.title = element_text(size = 13),
+#         legend.text = element_text(size = 11),legend.title = element_text(size = 13),
+#         plot.margin = unit(c(0.4,0.4,0.4,0.4),'cm'))
+# ggsave(pca_plot,filename = "PCA.pdf")
+
+pca_plot
+```
+
+
+```{r}
+# init = mice(new_data,maxit = 10)
+# meth = init$method
+# meth[c("ethnicity","gender","hospital_admit_source","icu_admit_source","icu_type","apache_3j_bodysystem","apache_2_bodysystem")]=""
+# predM = init$predictorMatrix
+# imputed = mice(new_data, method=meth, predictorMatrix=predM, m=2)
+#imputed<-complete(imputed)
+```
