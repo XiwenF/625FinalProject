@@ -9,7 +9,7 @@ This study aims to apply different machine learning algorithms on real-world cli
 
 ## Data
 
-The full dataset, training dataset and test dataset are in the .[Data].(/Data) folder.
+The full dataset, training dataset and test dataset are in the [Data](/Data) folder.
 
 ## Code
 
