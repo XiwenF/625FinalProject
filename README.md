@@ -18,8 +18,9 @@ The code for data processing and data spliting can be found in [data_processing.
 The codes for implementing the three machine learning methods are in the [Codes](/Codes) folder, named with the corresponding method.
 
 ## Report
+The pdf file of the final report is [Final-Project-Group-6.pdf](/Final-Project-Group-6.pdf).
 
-TBA
+The Rmd file that generates the report is [Final Project Group 6.Rmd](/Final Project Group 6.Rmd).
 
 ## Author Contributions
 All works are completed as a group, and each member has a main task:
