@@ -79,23 +79,10 @@ There are 38 features shown above.
 ```{r}
 library(caret)
 # confusion matrix
-conf_mat_untrained = confusionMatrix(data = as.factor(prediction), 
-                                     reference = as.factor(test$hospital_death),
-                                     positive="1")
-conf_mat_untrained
+
 conf_mat = confusionMatrix(data = as.factor(xgb_test), reference = as.factor(test$hospital_death),
                            positive="1")
 conf_mat
-
-# auc or roc for untrained model
-library(pROC)
-auc(test$hospital_death, prediction)
-precision <- posPredValue(as.factor(prediction), as.factor(test$hospital_death), positive = "1")
-precision
-recall <- sensitivity(as.factor(prediction), as.factor(test$hospital_death), positive="1")
-recall
-f1 <- (2 * precision * recall) / (precision + recall)
-f1
 
 # auc or roc for trained model
 auc(test$hospital_death, xgb_test)
