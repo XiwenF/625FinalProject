@@ -1,5 +1,6 @@
-# Machine Learning-Based Prediction of Patient Survival Outcomes
-BIOSTAT 625 Final Project -- Group 6
+# BIOSTAT 625 Project Group6
+**Project Topic:** Machine Learning-Based Prediction of Patient Survival Outcomes
+**Group Members:** Claire Kong, Leyuan Qian and Xiwen Feng
 
 ## Project Description
 
@@ -7,7 +8,7 @@ This study aims to apply different machine learning algorithms on real-world cli
 
 ## Data
 
-TBA
+The full dataset, training dataset and test dataset are in the .[Data].(/Data) folder.
 
 ## Code
 
