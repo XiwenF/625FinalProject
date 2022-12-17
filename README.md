@@ -3,7 +3,7 @@ BIOSTAT 625 Final Project -- Group 6
 
 ## Project Description
 
-TBA
+This study aims to apply different machine learning algorithms on real-world clinical data to predict patient survival outcome and help healthcare professionals optimize their patient management strategies.
 
 ## Data
 
@@ -20,7 +20,7 @@ TBA
 TBA
 
 ## Author Contributions
-Claire Kong:
+Claire Kong: 
 
 Leyuan Qian:
 
