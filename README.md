@@ -1,5 +1,6 @@
 # BIOSTAT 625 Project Group6
 **Project Topic:** Machine Learning-Based Prediction of Patient Survival Outcomes
+
 **Group Members:** Claire Kong, Leyuan Qian and Xiwen Feng
 
 ## Project Description
