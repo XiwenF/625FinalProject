@@ -13,7 +13,7 @@ The full dataset, training dataset and test dataset are in the [Data](/Data) fol
 
 ## Code
 
-The raw code for implementing the three machine learning methods is in the [MLcodes](/MLcodes) folder.
+The raw code for implementing the three machine learning methods is in the [Codes](/Codes) folder.
 
 TBA
 
