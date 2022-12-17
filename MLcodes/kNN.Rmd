@@ -50,8 +50,6 @@ for (i in seq(1,30,by=2)){
   print(conf_mat$overall["Accuracy"]);print(conf_mat$byClass["Sensitivity"]);
   print(conf_mat$byClass["Specificity"])
 }
-
-
 ```
 
 ```{r}
