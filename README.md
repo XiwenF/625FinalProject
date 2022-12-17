@@ -22,8 +22,8 @@ The code for implementing the three machine learning methods is in the [Codes](/
 TBA
 
 ## Author Contributions
-Claire Kong: 
+Claire Kong: XGBoost
 
-Leyuan Qian:
+Leyuan Qian: kNN
 
-Xiwen Feng:
+Xiwen Feng: Random Forest
