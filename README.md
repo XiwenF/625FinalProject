@@ -13,15 +13,17 @@ The full dataset, training dataset and test dataset are in the [Data](/Data) fol
 
 ## Code
 
-The code for data processing and data spliting can be found in [].
+The code for data processing and data spliting can be found in [data_processing.ipynb](/Codes/data_processing.ipynb) in the [Codes](/Codes) folder.
 
-The code for implementing the three machine learning methods is in the [Codes](/Codes) folder, named with the corresponding method.
+The codes for implementing the three machine learning methods are in the [Codes](/Codes) folder, named with the corresponding method.
 
 ## Report
 
 TBA
 
 ## Author Contributions
+All works are completed as a group, and each member has a main task:
+
 Claire Kong: XGBoost
 
 Leyuan Qian: kNN
